@@ -1,8 +1,8 @@
-from .api_tool import VehicleInfoTool
-from .market_tool import MarketAnalyzerTool, CarDiscoveryTool
+from .market_tools import MarketAnalyzerTool, CarDiscoveryTool
+from .wiki_tool import CarWikiTool
 
 all_tools = [
-    VehicleInfoTool,
+    CarWikiTool,
     MarketAnalyzerTool,
     CarDiscoveryTool,
 ]

@@ -1,5 +1,4 @@
-import os
-from typing import List, Dict, Optional
+from typing import Optional
 from pathlib import Path
 import json
 from smolagents import Tool
@@ -8,7 +7,7 @@ from tools.utils import handle_tool_errors
 
 class MarketAnalyzerTool(Tool):
     name = "analyze_market_stats"
-    description = "Предоставляет рыночные данные (цена, надежность) из локальной базы данных."
+    description = "Получает подробную информацию (надежность, плюсы/минусы) по конкретной МОДЕЛИ (например, 'BMW 3 Series' или 'Camry')."
     inputs = {
         "model_name": {"type": "string", "description": "Название модели автомобиля"}
     }
@@ -23,33 +22,27 @@ class MarketAnalyzerTool(Tool):
             data = json.load(f)
 
         target = model_name.lower()
-        result = next(
-            (item for item in data if target in item["model"].lower() or item["model"].lower() in target),
-            None
-        )
+        result = None
+
+        for item in data:
+            db_model = item["model"].lower()
+            if db_model in target or target in db_model:
+                result = item
+                break
 
         if result:
-            # Используем .get() с дефолтными значениями, чтобы не было KeyError
-            price = result.get('avg_price', 'Нет данных')
-            # Проверяем оба варианта ключа на всякий случай
-            rel = result.get('reliability_score') or 'Нет данных'
-            pros = result.get('pros', 'Не указаны')
-            cons = result.get('cons', 'Не указаны')
-
             return (
-                f"Результаты анализа рынка для {result.get('brand')} {result.get('model')}:\n"
-                f"- Средняя цена: {price} руб.\n"
-                f"- Индекс надежности: {rel}/10\n"
-                f"- Плюсы: {pros}\n"
-                f"- Минусы: {cons}"
+                f"РЫНОЧНЫЕ ДАННЫЕ ({result['brand']} {result['model']}):\n"
+                f"- Цена: {result['avg_price']:,} руб.\n"
+                f"- Надежность: {result['reliability_score']}/10\n"
+                f"- Особенности: {result.get('common_issues', 'Нет данных')}"
             )
-
-        return f"Модель '{model_name}' отсутствует в локальном датасете."
+        return f"Модель '{model_name}' не найдена в ценовой базе. Используй только данные из Википедии."
 
 
 class CarDiscoveryTool(Tool):
     name = "discover_cars"
-    description = "Ищет автомобили в базе данных по бюджету и году выпуска."
+    description = "Ищет машины только по БЮДЖЕТУ и ГОДУ. Не использовать для поиска конкретных моделей по названию."
     inputs = {
         "max_price": {"type": "integer", "description": "Максимальный бюджет в рублях", "nullable": True},
         "min_year": {"type": "integer", "description": "Минимальный год выпуска", "nullable": True}
@@ -62,19 +55,31 @@ class CarDiscoveryTool(Tool):
         data_path = base_path / "data" / "cars_data.json"
 
         with open(data_path, "r", encoding="utf-8") as f:
-            data: List[Dict] = json.load(f)
+            data = json.load(f)
 
-        results = []
-        for car in data:
-            # Проверяем бюджет (если указан)
-            price_ok = (max_price is None) or (car["avg_price"] <= max_price)
-            # Проверяем год (если указан) - для этого в JSON нужно добавить поле 'year' или 'start_year'
-            year_ok = (min_year is None) or (car.get("year_produced", 0) >= min_year)
+        filtered = [car for car in data if
+                    (max_price is None or car["avg_price"] <= max_price) and
+                    (min_year is None or car.get("year_produced", 0) >= min_year)]
 
-            if price_ok and year_ok:
-                results.append(f"{car['brand']} {car['model']} ({car['avg_price']:,} руб.)")
+        if not filtered:
+            return "К сожалению, ничего не найдено."
 
-        if not results:
-            return "К сожалению, под ваш бюджет и критерии ничего не найдено."
+        if max_price and max_price > 1000000:
+            min_threshold = max_price * 0.8
+            premium_candidates = [car for car in filtered if car["avg_price"] >= min_threshold]
 
-        return "Подходящие варианты:\n" + "\n".join(results[:5])
+            if len(premium_candidates) >= 3:
+                filtered = premium_candidates
+
+        filtered.sort(key=lambda x: x.get('reliability_score', 0), reverse=True)
+        final_selection = filtered[:3]
+
+        output = f"🏁 Лучшие варианты в сегменте до {max_price:,} руб.:\n\n"
+        for i, car in enumerate(final_selection, 1):
+            score = car.get('reliability_score', 'N/A')
+            issues = car.get('common_issues', 'Нет данных')
+            output += (f"{i}. **{car['brand']} {car['model']}**\n"
+                       f"   💰 Цена: {car['avg_price']:,} руб.\n"
+                       f"   🛡️ Надежность: {score}/10\n"
+                       f"   ⚠️ Особенности: {issues}\n\n")
+        return output
