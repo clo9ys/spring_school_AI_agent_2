@@ -1,0 +1,17 @@
+[
+  {"brand": "Toyota", "model": "Camry", "avg_price": 2800000, "year_produced": 2019, "reliability_score": 9.5, "common_issues": "Слабое лакокрасочное покрытие, угоняемость"},
+  {"brand": "Toyota", "model": "Corolla", "avg_price": 1600000, "year_produced": 2017, "reliability_score": 9.8, "common_issues": "Низкий клиренс"},
+  {"brand": "BMW", "model": "3 Series", "avg_price": 2900000, "year_produced": 2018, "reliability_score": 7.5, "common_issues": "Чувствительность к качеству масла, электроника"},
+  {"brand": "BMW", "model": "5 Series", "avg_price": 4200000, "year_produced": 2019, "reliability_score": 7.0, "common_issues": "Система охлаждения, пневмоподвеска"},
+  {"brand": "Hyundai", "model": "Solaris", "avg_price": 1100000, "year_produced": 2018, "reliability_score": 8.5, "common_issues": "Тонкий металл, катализатор"},
+  {"brand": "Kia", "model": "Rio", "avg_price": 1150000, "year_produced": 2019, "reliability_score": 8.6, "common_issues": "Жесткая подвеска"},
+  {"brand": "Kia", "model": "Sportage", "avg_price": 2300000, "year_produced": 2018, "reliability_score": 8.2, "common_issues": "Задиры в цилиндрах (редко в новых), муфта ПП"},
+  {"brand": "Volkswagen", "model": "Polo", "avg_price": 1200000, "year_produced": 2020, "reliability_score": 8.0, "common_issues": "Стук поршней на холодную, закисание трапеции дворников"},
+  {"brand": "Volkswagen", "model": "Tiguan", "avg_price": 2700000, "year_produced": 2019, "reliability_score": 7.8, "common_issues": "Жор масла (на ранних TSI), DSG при неправильной эксплуатации"},
+  {"brand": "Mercedes-Benz", "model": "C-Class", "avg_price": 3500000, "year_produced": 2018, "reliability_score": 7.2, "common_issues": "Скрипы в салоне, сложная мультимедиа"},
+  {"brand": "Mazda", "model": "CX-5", "avg_price": 2600000, "year_produced": 2019, "reliability_score": 9.0, "common_issues": "Слабое лобовое стекло, аккумулятор"},
+  {"brand": "Honda", "model": "Civic", "avg_price": 1900000, "year_produced": 2018, "reliability_score": 9.2, "common_issues": "Рулевая рейка"},
+  {"brand": "Skoda", "model": "Octavia", "avg_price": 1800000, "year_produced": 2019, "reliability_score": 8.4, "common_issues": "Термостат, помпа"},
+  {"brand": "Lada", "model": "Vesta", "avg_price": 950000, "year_produced": 2021, "reliability_score": 7.5, "common_issues": "Скрип втулок стабилизатора, мультимедиа"},
+  {"brand": "Renault", "model": "Duster", "avg_price": 1400000, "year_produced": 2019, "reliability_score": 8.8, "common_issues": "Конденсат кондиционера в салон, слабая краска крыши"}
+]
