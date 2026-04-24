@@ -16,16 +16,35 @@ class MarketAnalyzerTool(Tool):
 
     @handle_tool_errors
     def forward(self, model_name: str) -> str:
-        data_path = os.path.join("data", "market_db.json")
+        base_path = Path(__file__).parent.parent
+        data_path = base_path / "data" / "cars_data.json"
+
         with open(data_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        for item in data:
-            if item["model"].lower() in model_name.lower():
-                return (f"Статистика по {model_name}: Средняя цена {item['avg_price']} руб. "
-                        f"Индекс надежности: {item['reliability_index']}/10. Плюсы: {item['pros']}. Минусы: {item['cons']}")
+        target = model_name.lower()
+        result = next(
+            (item for item in data if target in item["model"].lower() or item["model"].lower() in target),
+            None
+        )
 
-        return f"Модель '{model_name}' не найдена в локальной базе."
+        if result:
+            # Используем .get() с дефолтными значениями, чтобы не было KeyError
+            price = result.get('avg_price', 'Нет данных')
+            # Проверяем оба варианта ключа на всякий случай
+            rel = result.get('reliability_score') or 'Нет данных'
+            pros = result.get('pros', 'Не указаны')
+            cons = result.get('cons', 'Не указаны')
+
+            return (
+                f"Результаты анализа рынка для {result.get('brand')} {result.get('model')}:\n"
+                f"- Средняя цена: {price} руб.\n"
+                f"- Индекс надежности: {rel}/10\n"
+                f"- Плюсы: {pros}\n"
+                f"- Минусы: {cons}"
+            )
+
+        return f"Модель '{model_name}' отсутствует в локальном датасете."
 
 
 class CarDiscoveryTool(Tool):
