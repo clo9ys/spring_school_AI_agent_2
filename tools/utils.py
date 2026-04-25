@@ -1,7 +1,20 @@
 import functools
 import logging
+from pathlib import Path
 from requests.exceptions import Timeout, ConnectionError, HTTPError
 from typing import Any, Callable
+
+log_dir = Path(__file__).parent.parent / "logs"
+log_dir.mkdir(exist_ok=True)
+log_file = log_dir / "agent.log"
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(log_file, encoding="utf-8"),
+    ]
+)
 
 logger = logging.getLogger("car_scout_agent")
 
