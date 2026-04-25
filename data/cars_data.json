@@ -1,0 +1,22 @@
+[
+  {"brand": "Toyota", "model": "Camry", "avg_price": 2800000, "year_produced": 2019, "reliability_score": 9.5, "engine": "2.5L I4", "hp": 181, "weight": 1555, "common_issues": "Слабое ЛКП, тонкое лобовое стекло, угоняемость"},
+  {"brand": "Toyota", "model": "RAV4", "avg_price": 3200000, "year_produced": 2020, "reliability_score": 9.2, "engine": "2.0L I4", "hp": 149, "weight": 1650, "common_issues": "Вариатор, слабая шумоизоляция арок"},
+  {"brand": "BMW", "model": "3 Series", "avg_price": 3100000, "year_produced": 2019, "reliability_score": 7.8, "engine": "2.0L Turbo", "hp": 184, "weight": 1545, "common_issues": "Электроника, течи масла, требовательность к топливу"},
+  {"brand": "BMW", "model": "5 Series", "avg_price": 4500000, "year_produced": 2020, "reliability_score": 7.5, "engine": "2.0L Diesel", "hp": 190, "weight": 1700, "common_issues": "Пневмоподвеска, система охлаждения"},
+  {"brand": "BMW", "model": "M5", "avg_price": 9500000, "year_produced": 2019, "reliability_score": 6.8, "engine": "4.4L V8 Twin-Turbo", "hp": 600, "weight": 1930, "common_issues": "Износ вкладышей, перегрев тормозов на треке"},
+  {"brand": "Hyundai", "model": "Solaris", "avg_price": 1200000, "year_produced": 2019, "reliability_score": 8.7, "engine": "1.6L I4", "hp": 123, "weight": 1150, "common_issues": "Ступичные подшипники, задиры в катализаторе"},
+  {"brand": "Kia", "model": "Sportage", "avg_price": 2400000, "year_produced": 2019, "reliability_score": 8.1, "engine": "2.0L I4", "hp": 150, "weight": 1550, "common_issues": "Муфта полного привода, подвесные подшипники"},
+  {"brand": "Volkswagen", "model": "Tiguan", "avg_price": 2900000, "year_produced": 2020, "reliability_score": 7.9, "engine": "2.0L TSI", "hp": 180, "weight": 1650, "common_issues": "Жор масла, помпа, ресурс DSG в пробках"},
+  {"brand": "Skoda", "model": "Octavia", "avg_price": 2100000, "year_produced": 2020, "reliability_score": 8.5, "engine": "1.4L TSI", "hp": 150, "weight": 1350, "common_issues": "Термостат, скрипы в салоне"},
+  {"brand": "Mazda", "model": "CX-5", "avg_price": 2700000, "year_produced": 2019, "reliability_score": 9.1, "engine": "2.5L I4", "hp": 194, "weight": 1600, "common_issues": "Слабый аккумулятор, катушки зажигания"},
+  {"brand": "Mercedes-Benz", "model": "E-Class", "avg_price": 4800000, "year_produced": 2020, "reliability_score": 7.0, "engine": "2.0L Diesel", "hp": 194, "weight": 1750, "common_issues": "Пневмобаллоны, датчики NOX"},
+  {"brand": "Mercedes-Benz", "model": "G-Class", "avg_price": 15000000, "year_produced": 2020, "reliability_score": 8.0, "engine": "4.0L V8", "hp": 585, "weight": 2450, "common_issues": "Аэродинамические шумы, коррозия петель"},
+  {"brand": "Audi", "model": "Q5", "avg_price": 3500000, "year_produced": 2018, "reliability_score": 7.4, "engine": "2.0L TFSI", "hp": 249, "weight": 1750, "common_issues": "Рывки S-tronic, опоры двигателя"},
+  {"brand": "Lada", "model": "Vesta", "avg_price": 1000000, "year_produced": 2021, "reliability_score": 7.8, "engine": "1.6L", "hp": 106, "weight": 1230, "common_issues": "Втулки стабилизатора, катушки зажигания"},
+  {"brand": "Renault", "model": "Duster", "avg_price": 1500000, "year_produced": 2019, "reliability_score": 9.0, "engine": "2.0L", "hp": 143, "weight": 1370, "common_issues": "Сальник коленвала, слабая краска крыши"},
+  {"brand": "Honda", "model": "Civic", "avg_price": 1950000, "year_produced": 2018, "reliability_score": 9.4, "engine": "1.5L Turbo", "hp": 174, "weight": 1300, "common_issues": "Рулевая рейка, тонкий металл"},
+  {"brand": "Volvo", "model": "XC60", "avg_price": 3800000, "year_produced": 2019, "reliability_score": 8.5, "engine": "2.0L D4", "hp": 190, "weight": 1850, "common_issues": "Замок багажника, мультимедиа"},
+  {"brand": "Geely", "model": "Tugella", "avg_price": 3200000, "year_produced": 2022, "reliability_score": 8.2, "engine": "2.0L Turbo", "hp": 238, "weight": 1815, "common_issues": "Электроника сидений, жесткие шины"},
+  {"brand": "Subaru", "model": "Forester", "avg_price": 2700000, "year_produced": 2019, "reliability_score": 8.7, "engine": "2.5L", "hp": 185, "weight": 1600, "common_issues": "Расход масла, передние сайлентблоки"},
+  {"brand": "Ford", "model": "Focus", "avg_price": 1400000, "year_produced": 2018, "reliability_score": 8.0, "engine": "1.5L EcoBoost", "hp": 150, "weight": 1350, "common_issues": "PowerShift рывки, теснота сзади"}
+]
